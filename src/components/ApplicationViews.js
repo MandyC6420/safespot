@@ -4,6 +4,9 @@ import { Home } from "./Home";
 import { LocationCard } from "./location/LocationCard";
 import { LocationProvider } from "./location/LocationProvider";
 import { LocationList } from "./location/LocationList";
+import { LocationForm } from "./location/LocationForm";
+import { NeighborhoodProvider } from "./neighborhood/NeighborhoodProvider";
+import { CategoryProvider } from "./category/CategoryProvider"
 
 export const ApplicationViews = () => {
   return (
@@ -18,6 +21,13 @@ export const ApplicationViews = () => {
         <Route exact path="/locations">
           <LocationList />
         </Route>
+        <CategoryProvider>
+          <NeighborhoodProvider>
+            <Route exact path="/locations/create">
+              <LocationForm />
+            </Route>
+          </NeighborhoodProvider>
+        </CategoryProvider>
       </LocationProvider>
     </>
   );
