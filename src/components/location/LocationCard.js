@@ -7,7 +7,7 @@ export const LocationCard = ({ location }) => (
     <section className="location">
         {console.log(location)}
         <Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="holder.js/100px180" />
+  {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
   <Card.Body>
     {/* <Card.Title>Huntington City Mission</Card.Title> */}
     <Card.Text>
@@ -16,7 +16,7 @@ export const LocationCard = ({ location }) => (
         <div className="location__phoneNumber">Phone Number:  {location.location_phoneNumber}</div>
         <div classname = "location__url"><p><a href = {location.location_url}>Website</a></p></div>
     </Card.Text>
-    <Button variant="primary">Go somewhere</Button>
+    {/* <Button variant="primary">Go somewhere</Button> */}
   </Card.Body>
 </Card>
 

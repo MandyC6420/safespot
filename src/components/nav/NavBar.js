@@ -12,7 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 export const NavBar = (props) => {
     return (
         <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">Safe Spot</Navbar.Brand>
+        <Navbar.Brand href="/">Safe Spot</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

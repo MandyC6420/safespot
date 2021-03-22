@@ -43,8 +43,8 @@ export const LocationForm = () => {
   const handleClickSaveLocation = (event) => {
     event.preventDefault(); //Prevents the browser from submitting the form
 
-    const neighborhood_id = parseInt(location.neighborhood_id);
-    const category_id = parseInt(location.category_id);
+    const neighborhood_id = parseInt(locations.neighborhood_id);
+    const category_id = parseInt(locations.category_id);
 
     if (neighborhood_id === 0 || category_id === 0) {
       window.alert("Please fill out all fields");
@@ -60,26 +60,77 @@ export const LocationForm = () => {
       <h2 className="locationForm__title">New Safe Spot</h2>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name"></label>
           <input
-            type="text"
-            id="name"
+            type="location_name"
+            id="location_name"
             onChange={handleControlledInputChange}
             required
             autoFocus
             className="form-control"
             placeholder="Safe Spot name"
-            value={location.location_name}
+            value={locations.location_name}
           />
+          {/* {console.log(locations)} */}
         </div>
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="location">Assign to location: </label>
+          <label htmlFor="address"></label>
+          <input
+            type="location_address"
+            id="location_address"
+            onChange={handleControlledInputChange}
+            required
+            autoFocus
+            className="form-control"
+            placeholder="Safe Spot Address"
+            value={locations.location_address}
+          />
+         
+        </div>
+      </fieldset>
+      <fieldset>
+        <div className="form-group">
+          <label htmlFor="Phone Number"></label>
+          <input
+            type="location_phoneNumber"
+            id="location_phoneNumber"
+            onChange={handleControlledInputChange}
+            required
+            autoFocus
+            className="form-control"
+            placeholder="Safe Spot Phone Number"
+            value={locations.location_phoneNumber}
+          />
+          
+        </div>
+      </fieldset>
+      <fieldset>
+        <div className="form-group">
+          <label htmlFor="url"></label>
+          <input
+            type="location_url"
+            id="location_url"
+            onChange={handleControlledInputChange}
+            required
+            autoFocus
+            className="form-control"
+            placeholder="Safe Spot Website URL"
+            value={locations.location_url}
+          />
+          
+        </div>
+      </fieldset>
+      
+      <fieldset>
+        <div className="form-group">
+          <label htmlFor="location"></label>
           <select
-            defaultValue={location.category_id}
-            name="locationId"
-            id="locationId"
+            defaultValue={locations.category_id}
+            name="category_id"
+            id="category_id"
+            onChange={handleControlledInputChange}
             className="form-control"
           >
             <option value="0">Select a Safe Spot Category</option>
@@ -93,11 +144,12 @@ export const LocationForm = () => {
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="customerId">Customer: </label>
+          <label htmlFor="customerId"></label>
           <select
-            defaultValue={location.neighborhood_id}
-            name="customer"
-            id="customerId"
+            defaultValue={locations.neighborhood_id}
+            name="neighborhood_id"
+            id="neighborhood_id"
+            onChange={handleControlledInputChange}
             className="form-control"
           >
             <option value="0">Select a neighborhood</option>

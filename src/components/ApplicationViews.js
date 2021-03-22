@@ -17,12 +17,11 @@ export const ApplicationViews = () => {
       </Route>
       <LocationProvider>
         {/* Render the animal list when http://localhost:3000/locations */}
-
-        <Route exact path="/locations">
-          <LocationList />
-        </Route>
         <CategoryProvider>
           <NeighborhoodProvider>
+          <Route exact path="/locations">
+          <LocationList />
+        </Route>
             <Route exact path="/locations/create">
               <LocationForm />
             </Route>

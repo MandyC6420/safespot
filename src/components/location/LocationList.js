@@ -10,6 +10,13 @@ export const LocationList = () => {
 
   const history = useHistory()
 
+  //useEffect - reach out to the world for something
+  useEffect(() => {
+    console.log("LocationList: useEffect - getLocations")
+    getLocations()
+
+  }, [])
+
   return (
     <>
         <h2>Locations</h2>
@@ -23,16 +30,9 @@ export const LocationList = () => {
     })
         }
         </div>
-    </>
+        </>
+    
 )
-  //useEffect - reach out to the world for something
-  useEffect(() => {
-    console.log("LocationList: useEffect - getLocations")
-    getLocations()
-
-  }, [])
-
-
   return (
     <div className="locations">
       {console.log("LocationList: Render", locations)}
