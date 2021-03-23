@@ -2,6 +2,7 @@ import React from "react"
 import "../Safespot.css"
 import { Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import { Link } from "react-router-dom"
 
 export const LocationCard = ({ location }) => (
     <section className="location">
@@ -11,7 +12,10 @@ export const LocationCard = ({ location }) => (
   <Card.Body>
     {/* <Card.Title>Huntington City Mission</Card.Title> */}
     <Card.Text>
-    <h3 className="location__name">{location.location_name}</h3>
+    <Link to={`/locations/detail/${location.id}`}>
+           { location.location_name }
+          </Link>
+    {/* <h3 className="location__name">{location.location_name}</h3> */}
         <address className="location__address">Address:  {location.location_address}</address>
         <div className="location__phoneNumber">Phone Number:  {location.location_phoneNumber}</div>
         <div classname = "location__url"><p><a href = {location.location_url}>Website</a></p></div>
