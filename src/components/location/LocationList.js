@@ -4,6 +4,7 @@ import { LocationCard } from "./LocationCard"
 import { NeighborhoodContext } from "../neighborhood/NeighborhoodProvider";
 import { CategoryContext } from "../category/CategoryProvider";
 import { useHistory } from "react-router-dom"
+import { Button } from 'react-bootstrap';
 import "./LocationCard.css"
 
 export const LocationList = () => {
@@ -27,9 +28,9 @@ const history = useHistory()
   return (
     <>
         <h2>Locations</h2>
-		<button onClick={() => {history.push("/locations/create")}}>
+		<Button variant="primary" onClick={() => {history.push("/locations/create")}}>
             Add Safe Spot
-        </button>
+        </Button>
         <div className="locations">
         {
 		locations.map(location => {

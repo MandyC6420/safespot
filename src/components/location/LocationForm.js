@@ -178,7 +178,7 @@ export const LocationForm = () => {
             onChange={handleControlledInputChange}
             className="control"
           >
-            <option value="0">Select a Safe Spot Category</option>
+            <option value="0">Please select a Safe Spot Category</option>
             {categories.map((c) => (
               <option key={c.id} value={c.id}>
                 {c.name}
@@ -197,7 +197,7 @@ export const LocationForm = () => {
             onChange={handleControlledInputChange}
             className="control"
           >
-            <option value="0">Select a neighborhood</option>
+            <option value="0">Please select a neighborhood</option>
             {neighborhood.map((n) => (
               <option key={n.id} value={n.id}>
                 {n.name}
