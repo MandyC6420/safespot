@@ -1,15 +1,27 @@
 import React, { useContext, useEffect, useState } from "react";
-import { LocationContext } from "../location/LocationProvider";
+import { LocationContext } from "./LocationProvider";
 import { NeighborhoodContext } from "../neighborhood/NeighborhoodProvider";
 import { CategoryContext } from "../category/CategoryProvider";
-import "../Safespot.css";
+import "./LocationForm.css";
 import { useHistory, useParams } from "react-router-dom";
+
 
 export const LocationForm = () => {
   // const { addLocation } = useContext(LocationContext)
-  const { locations, addLocation, getLocations } = useContext(LocationContext);
+  const {
+    locations,
+    addLocation,
+    getLocations,
+    getLocationById,
+    updateLocation,
+  } = useContext(LocationContext);
   const { neighborhood, getNeighborhoods } = useContext(NeighborhoodContext);
   const { categories, getCategories } = useContext(CategoryContext);
+
+  //for edit, hold on to state of location in this view
+  // const [location, setLocation] = useState({})
+  //wait for data before button is active
+  const [isLoading, setIsLoading] = useState(true);
 
   const [location, setLocation] = useState({
     location_name: "",
@@ -19,12 +31,12 @@ export const LocationForm = () => {
     location_address: "",
     location_url: "",
   });
-
+  const { locationId } = useParams();
   const history = useHistory();
 
-  useEffect(() => {
-    getLocations().then(getNeighborhoods).then(getCategories);
-  }, []);
+  // useEffect(() => {
+  //   getLocations().then(getNeighborhoods).then(getCategories);
+  // }, []);
 
   //when a field changes, update state. The return will re-render and display based on the values in state
   //Controlled component
@@ -39,37 +51,73 @@ export const LocationForm = () => {
     // update state
     setLocation(newLocation);
   };
-
-  const handleClickSaveLocation = (event) => {
-    event.preventDefault(); //Prevents the browser from submitting the form
-
-    const neighborhood_id = parseInt(locations.neighborhood_id);
-    const category_id = parseInt(locations.category_id);
-
-    if (neighborhood_id === 0 || category_id === 0) {
-      window.alert("Please fill out all fields");
+  const handleSaveLocation = () => {
+    if (parseInt(location.locationId) === 0) {
+      window.alert("Please select a location");
     } else {
-      //invoke addLocation passing location as an argument.
-      //once complete, change the url and display the location list
-      addLocation(location).then(() => history.push("/locations"));
+      //disable the button - no extra clicks
+      setIsLoading(true);
+      if (locationId) {
+        //PUT - update
+        {console.log(location)}
+        updateLocation({
+          id: location.id,
+          location_name: location.location_name,
+          location_phoneNumber: location.location_phoneNumber,
+          location_address: location.location_address,
+          location_url: location.location_url,
+          Neighborhood: location.neighborhood_id,
+          Categories: location.category_id
+
+        }).then(() => history.push(`/locations/detail/${location.id}`));
+      } else {
+        //POST - add
+        addLocation({
+          id: location.id,
+          location_name: location.location_name,
+          location_phoneNumber: location.location_phoneNumber,
+          location_address: location.location_address,
+          location_url: location.location_url,
+          Neighborhood: location.neighborhood_id,
+          Categories: location.category_id
+
+        }).then(() => history.push("/locations"));
+      }
     }
   };
 
+  // Get customers and locations. If animalId is in the URL, getAnimalById
+  useEffect(() => {
+    getLocations().then(() => {
+      if (locationId) {
+        getLocationById(locationId).then((location) => {
+          setLocation(location);
+          setIsLoading(false);
+        });
+      } else {
+        setIsLoading(false);
+      }
+    });
+    getCategories();
+    getNeighborhoods();
+  }, []);
+
   return (
     <form className="locationForm">
-      <h2 className="locationForm__title">New Safe Spot</h2>
+      <h2 className="locationForm_title">New Safe Spot</h2>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="name"></label>
+          <label htmlFor="name">Location Name</label>
           <input
-            type="location_name"
+            type="text"
             id="location_name"
-            onChange={handleControlledInputChange}
+            name="name"
             required
             autoFocus
-            className="form-control"
+            className="control"
             placeholder="Safe Spot name"
-            value={locations.location_name}
+            onChange={handleControlledInputChange}
+            defaultValue={location.location_name}
           />
           {/* {console.log(locations)} */}
         </div>
@@ -78,16 +126,15 @@ export const LocationForm = () => {
         <div className="form-group">
           <label htmlFor="address"></label>
           <input
-            type="location_address"
+            type="text"
             id="location_address"
-            onChange={handleControlledInputChange}
             required
             autoFocus
-            className="form-control"
+            className="control"
             placeholder="Safe Spot Address"
-            value={locations.location_address}
+            onChange={handleControlledInputChange}
+            defaultValue={location.location_address}
           />
-         
         </div>
       </fieldset>
       <fieldset>
@@ -96,14 +143,13 @@ export const LocationForm = () => {
           <input
             type="location_phoneNumber"
             id="location_phoneNumber"
-            onChange={handleControlledInputChange}
             required
             autoFocus
-            className="form-control"
+            className="control"
             placeholder="Safe Spot Phone Number"
-            value={locations.location_phoneNumber}
+            onChange={handleControlledInputChange}
+            defaultValue={location.location_phoneNumber}
           />
-          
         </div>
       </fieldset>
       <fieldset>
@@ -112,26 +158,25 @@ export const LocationForm = () => {
           <input
             type="location_url"
             id="location_url"
-            onChange={handleControlledInputChange}
             required
             autoFocus
-            className="form-control"
+            className="control"
             placeholder="Safe Spot Website URL"
-            value={locations.location_url}
+            onChange={handleControlledInputChange}
+            defaultValue={location.location_url}
           />
-          
         </div>
       </fieldset>
-      
+
       <fieldset>
         <div className="form-group">
           <label htmlFor="location"></label>
           <select
-            defaultValue={locations.category_id}
+            value={location.category_id}
             name="category_id"
             id="category_id"
             onChange={handleControlledInputChange}
-            className="form-control"
+            className="control"
           >
             <option value="0">Select a Safe Spot Category</option>
             {categories.map((c) => (
@@ -144,13 +189,13 @@ export const LocationForm = () => {
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="customerId"></label>
+          <label htmlFor=""></label>
           <select
-            defaultValue={locations.neighborhood_id}
+            value={location.neighborhood_id}
             name="neighborhood_id"
             id="neighborhood_id"
             onChange={handleControlledInputChange}
-            className="form-control"
+            className="control"
           >
             <option value="0">Select a neighborhood</option>
             {neighborhood.map((n) => (
@@ -161,9 +206,14 @@ export const LocationForm = () => {
           </select>
         </div>
       </fieldset>
-      <button className="btn btn-primary" onClick={handleClickSaveLocation}>
-        Save Save Spot
-      </button>
-    </form>
+      <button className="btn btn-primary"
+          disabled={isLoading}
+          onClick={event => {
+            event.preventDefault() // Prevent browser from submitting the form and refreshing the page
+            handleSaveLocation()
+          }}>
+        {locationId ? <>Save Location</> : <>Add Safe Spot</>}</button>
+      </form>
+    
   );
 };

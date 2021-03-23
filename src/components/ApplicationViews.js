@@ -6,22 +6,30 @@ import { LocationProvider } from "./location/LocationProvider";
 import { LocationList } from "./location/LocationList";
 import { LocationForm } from "./location/LocationForm";
 import { NeighborhoodProvider } from "./neighborhood/NeighborhoodProvider";
-import { CategoryProvider } from "./category/CategoryProvider"
+import { CategoryProvider } from "./category/CategoryProvider";
+import { LocationDetail } from "./location/LocationDetail";
+import { Location } from "./location/Location";
 
 export const ApplicationViews = () => {
   return (
     <>
-      {/* Render the location list when http://localhost:3000/ */}
-      <Route exact path="/">
-        <Home />
-      </Route>
       <LocationProvider>
-        {/* Render the animal list when http://localhost:3000/locations */}
+        {/* Render the location list when http://localhost:3000/locations */}
         <CategoryProvider>
           <NeighborhoodProvider>
-          <Route exact path="/locations">
-          <LocationList />
-        </Route>
+            {/* Render the location list when http://localhost:3000/ */}
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/locations">
+              <LocationList />
+            </Route>
+            <Route exact path="/locations/detail/:locationId(\d+)">
+              <LocationDetail />
+            </Route>
+            <Route path="/locations/edit/:locationId(\d+)">
+              <LocationForm />
+            </Route>
             <Route exact path="/locations/create">
               <LocationForm />
             </Route>
