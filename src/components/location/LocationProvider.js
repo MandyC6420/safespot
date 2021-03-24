@@ -48,6 +48,8 @@ export const LocationProvider = (props) => {
     }).then(getLocations);
   };
 
+  const [ searchTerms, setSearchTerms ] = useState("")
+
   /*
         You return a context provider which has the
         `animals` state, `getAnimals` function,
@@ -63,6 +65,8 @@ export const LocationProvider = (props) => {
         getLocationById,
         releaseLocation,
         updateLocation,
+        setSearchTerms,
+        searchTerms
       }}
     >
       {props.children}

@@ -39,7 +39,7 @@ export const LocationDetail = () => {
       >
         Edit
         </Button>{' '}
-      <button onClick={handleRelease}>Delete Safe Spot</button>
+      <Button onClick={handleRelease}>Delete Safe Spot</Button>
       {/* <div className="location__owner">Customer: {location.customer?.location_url}</div> */}
     </section>
   );

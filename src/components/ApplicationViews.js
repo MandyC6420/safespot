@@ -9,6 +9,7 @@ import { NeighborhoodProvider } from "./neighborhood/NeighborhoodProvider";
 import { CategoryProvider } from "./category/CategoryProvider";
 import { LocationDetail } from "./location/LocationDetail";
 import { Location } from "./location/Location";
+import { LocationSearch } from "./location/LocationSearch";
 
 export const ApplicationViews = () => {
   return (
@@ -22,6 +23,8 @@ export const ApplicationViews = () => {
               <Home />
             </Route>
             <Route exact path="/locations">
+              <LocationSearch />
+              <LocationList />
               <LocationList />
             </Route>
             <Route exact path="/locations/detail/:locationId(\d+)">
