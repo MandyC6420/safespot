@@ -39,7 +39,7 @@ export const LocationList = () => {
 
   //useEffect - reach out to the world for something
   useEffect(() => {
-    console.log("LocationList: useEffect - getLocations");
+    //
     getLocations();
     getCategories();
     getNeighborhoods();
@@ -47,21 +47,20 @@ export const LocationList = () => {
 
   useEffect(() => {
     if (searchTerms !== "") {
-      // If the search field is not blank, display matching animals
+      // If the search field is not blank, display matching locations
       const subset = locations.filter((location) =>
         location.location_name.toLowerCase().includes(searchTerms)
       );
       setFiltered(subset);
     } else {
-      // If the search field is blank, display all animals
+      // If the search field is blank, display all locations
       setFiltered(locations);
     }
   }, [searchTerms, locations]);
 
   return (
     <>
-
-<fieldset>
+      <fieldset>
         <div className="form-group">
           <label htmlFor="location"></label>
           <select
@@ -110,8 +109,15 @@ export const LocationList = () => {
         Add Safe Spot
       </Button>
       <div className="locations">
-        {filteredLocations.map((location) => {
-          return <LocationCard key={location.id} location={location} />;
+      
+        {filteredLocations.map((loc) => {
+          return location.category_id === loc.category_id ? <LocationCard key ={loc.id} location={loc}/>:( 
+            location.neighborhood_id === loc.neighborhood_id ? (
+              <>
+                <LocationCard key={loc.id} location={loc} />
+              </>
+            ) : null
+          )
         })}
       </div>
     </>
