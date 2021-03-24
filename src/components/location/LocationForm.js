@@ -66,8 +66,8 @@ export const LocationForm = () => {
           location_phoneNumber: location.location_phoneNumber,
           location_address: location.location_address,
           location_url: location.location_url,
-          Neighborhood: location.neighborhood_id,
-          Categories: location.category_id
+          neighborhood_id: location.neighborhood_id,
+          category_id: location.category_id
 
         }).then(() => history.push(`/locations/detail/${location.id}`));
       } else {
@@ -78,8 +78,8 @@ export const LocationForm = () => {
           location_phoneNumber: location.location_phoneNumber,
           location_address: location.location_address,
           location_url: location.location_url,
-          Neighborhood: location.neighborhood_id,
-          Categories: location.category_id
+          neighborhood_id: location.neighborhood_id,
+          category_id: location.category_id
 
         }).then(() => history.push("/locations"));
       }
