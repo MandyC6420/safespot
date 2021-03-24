@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 export const LocationCard = ({ location }) => (
     <section className="location">
         {console.log(location)}
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '17rem' }}>
   {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
   <Card.Body>
     {/* <Card.Title>Huntington City Mission</Card.Title> */}

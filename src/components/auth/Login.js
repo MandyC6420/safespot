@@ -36,11 +36,12 @@ export const Login = props => {
                 <div>User does not exist</div>
                 <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
             </dialog>
-
+            
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
                     <h1>Safe Spot</h1>
                     <h2>Please sign in</h2>
+                    <large>Safety doesn't happen by Accident</large>
                     <fieldset>
                         <label htmlFor="inputEmail"> Username </label>
                         <input type="text"
@@ -50,6 +51,7 @@ export const Login = props => {
                             placeholder="Username"
                             required autoFocus />
                     </fieldset>
+                    
                     <fieldset>
                         <button type="submit">
                             Sign in
