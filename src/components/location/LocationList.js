@@ -109,15 +109,24 @@ export const LocationList = () => {
         Add Safe Spot
       </Button>
       <div className="locations">
-      
         {filteredLocations.map((loc) => {
-          return location.category_id === loc.category_id ? <LocationCard key ={loc.id} location={loc}/>:( 
+          return location.neighborhood_id !== 0 &&
+            location.category_id !== 0 ? (
+            location.category_id === loc.category_id &&
             location.neighborhood_id === loc.neighborhood_id ? (
-              <>
-                <LocationCard key={loc.id} location={loc} />
-              </>
+              <LocationCard key={loc.id} location={loc} />
             ) : null
-          )
+          ) : location.category_id !== 0 ? (
+            location.category_id === loc.category_id ? (
+              <LocationCard key={loc.id} location={loc} />
+            ) : null
+          ) : location.neighborhood_id !== 0 ? (
+            location.neighborhood_id === loc.neighborhood_id ? (
+              <LocationCard key={loc.id} location={loc} />
+            ) : null
+          ) : (
+            <LocationCard key={loc.id} location={loc} />
+          );
         })}
       </div>
     </>
