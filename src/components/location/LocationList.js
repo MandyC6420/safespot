@@ -22,8 +22,8 @@ export const LocationList = () => {
 
   const [location, setLocation] = useState({
     location_name: "",
-    neighborhood_id: 0,
-    category_id: 0,
+    neighborhood_id: "0",
+    category_id: "0",
     location_phoneNumber: "",
     location_address: "",
     location_url: "",
@@ -118,7 +118,6 @@ export const LocationList = () => {
               <div classname="filters">
                 <>
                   Location search:
-                  
                   <input
                     type="text"
                     className="input"
@@ -137,7 +136,9 @@ export const LocationList = () => {
                 onChange={handleControlledInputChange}
                 className="filters"
               >
-                <option value="0">Please select a Safe Spot Category</option>
+                <option value={parseInt(0)}>
+                  Please select a Safe Spot Category
+                </option>
                 {categories.map((c) => (
                   <option key={c.id} value={c.id}>
                     {c.name}
@@ -154,7 +155,9 @@ export const LocationList = () => {
                 onChange={handleControlledInputChange}
                 className="filters"
               >
-                <option value="0">Please select a neighborhood</option>
+                <option value={parseInt(0)}>
+                  Please select a neighborhood
+                </option>
                 {neighborhood.map((n) => (
                   <option key={n.id} value={n.id}>
                     {n.name}
@@ -177,17 +180,17 @@ export const LocationList = () => {
       </Button>
       <div className="locations">
         {filteredLocations.map((loc) => {
-          return location.neighborhood_id !== 0 &&
-            location.category_id !== 0 ? (
+          return location.neighborhood_id !== "0" &&
+            location.category_id !== "0" ? (
             location.category_id === loc.category_id &&
             location.neighborhood_id === loc.neighborhood_id ? (
               <LocationCard key={loc.id} location={loc} />
             ) : null
-          ) : location.category_id !== 0 ? (
+          ) : location.category_id !== "0" ? (
             location.category_id === loc.category_id ? (
               <LocationCard key={loc.id} location={loc} />
             ) : null
-          ) : location.neighborhood_id !== 0 ? (
+          ) : location.neighborhood_id !== "0" ? (
             location.neighborhood_id === loc.neighborhood_id ? (
               <LocationCard key={loc.id} location={loc} />
             ) : null
