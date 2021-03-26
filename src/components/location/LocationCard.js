@@ -23,7 +23,7 @@ export const LocationCard = ({ location }) => (
           </div>
           <div classname="location__url">
             <p>
-              <a href={location.location_url}>Website</a>
+              <a target={"_blank"} href={location.location_url}>Website</a>
             </p>
           </div>
         </Card.Text>
