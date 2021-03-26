@@ -6,10 +6,14 @@ import { CategoryContext } from "../category/CategoryProvider";
 import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "./LocationCard.css";
+import { Form } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 export const LocationList = () => {
   // This state changes when `getLocations()` is invoked below
-  const { locations, getLocations, searchTerms } = useContext(LocationContext);
+  const { locations, getLocations, searchTerms, setSearchTerms } = useContext(
+    LocationContext
+  );
   const { neighborhood, getNeighborhoods } = useContext(NeighborhoodContext);
   const { categories, getCategories } = useContext(CategoryContext);
   const [filteredLocations, setFiltered] = useState([]);
@@ -60,15 +64,18 @@ export const LocationList = () => {
 
   return (
     <>
-      <fieldset>
-        <div className="form-group">
+      <div classname="dropdown-div">
+        {/* dropdown for category */}
+
+        {/* <div className="category-dropdown">
+      
           <label htmlFor="location"></label>
           <select
             value={location.category_id}
             name="category_id"
             id="category_id"
             onChange={handleControlledInputChange}
-            className="control"
+            className="filters"
           >
             <option value="0">Please select a Safe Spot Category</option>
             {categories.map((c) => (
@@ -77,17 +84,20 @@ export const LocationList = () => {
               </option>
             ))}
           </select>
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
+          
+        </div> */}
+
+        {/* dropdown for neighborhood */}
+
+        {/* <div className="neighborhood-dropdown">
+        
           <label htmlFor=""></label>
           <select
             value={location.neighborhood_id}
             name="neighborhood_id"
             id="neighborhood_id"
             onChange={handleControlledInputChange}
-            className="control"
+            className="filters"
           >
             <option value="0">Please select a neighborhood</option>
             {neighborhood.map((n) => (
@@ -96,8 +106,65 @@ export const LocationList = () => {
               </option>
             ))}
           </select>
-        </div>
-      </fieldset>
+          
+        </div> */}
+      </div>
+
+      {/* Bootstrap example */}
+      <div className="margin-left">
+        <Form>
+          <Form.Row>
+            <Col>
+              <div classname="filters">
+                <>
+                  Location search:
+                  
+                  <input
+                    type="text"
+                    className="input"
+                    onKeyUp={(event) => setSearchTerms(event.target.value)}
+                    placeholder="Search for a Safe Spot... "
+                  />
+                </>
+              </div>
+            </Col>
+            <Col>
+              <label htmlFor="location"></label>
+              <select
+                value={location.category_id}
+                name="category_id"
+                id="category_id"
+                onChange={handleControlledInputChange}
+                className="filters"
+              >
+                <option value="0">Please select a Safe Spot Category</option>
+                {categories.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.name}
+                  </option>
+                ))}
+              </select>
+            </Col>
+            <Col>
+              <label htmlFor=""></label>
+              <select
+                value={location.neighborhood_id}
+                name="neighborhood_id"
+                id="neighborhood_id"
+                onChange={handleControlledInputChange}
+                className="filters"
+              >
+                <option value="0">Please select a neighborhood</option>
+                {neighborhood.map((n) => (
+                  <option key={n.id} value={n.id}>
+                    {n.name}
+                  </option>
+                ))}
+              </select>
+            </Col>
+          </Form.Row>
+        </Form>
+      </div>
 
       <h2>Locations</h2>
       <Button

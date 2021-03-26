@@ -6,6 +6,7 @@ export const LocationSearch = () => {
     const { setSearchTerms } = useContext(LocationContext)
 
     return (
+      <div classname="filters">
         <>
           Location search:
           <input type="text"
@@ -13,5 +14,6 @@ export const LocationSearch = () => {
             onKeyUp={(event) => setSearchTerms(event.target.value)}
             placeholder="Search for a Safe Spot... " />
         </>
+        </div>
       )
     }

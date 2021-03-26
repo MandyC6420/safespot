@@ -1,0 +1,25 @@
+.dropdown-div{
+    display: flex;
+    flex-direction: row;
+    
+}
+.category-dropdown{
+    width: 10em;
+    margin: 0;
+}
+
+.neighborhood-dropdown{
+    width: 10em;
+    margin: 0;
+}
+.locations{
+    margin: 0;
+}
+
+.margin-left{
+    margin-left: 5rem;
+    width: 90%;
+}
+.filters {
+    padding: 0.31em;
+}
