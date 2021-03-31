@@ -1,3 +1,4 @@
-image {
-    background-image: url(safespotlogo.png);
-}
+.safety-first {
+    display: flex;
+    justify-content: center;
+  }

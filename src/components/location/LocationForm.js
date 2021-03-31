@@ -51,9 +51,10 @@ export const LocationForm = () => {
     // update state
     setLocation(newLocation);
   };
+  // conditional to ensure fields are completed prior to saving a safe spot
   const handleSaveLocation = () => {
-    if (parseInt(location.locationId) === 0) {
-      window.alert("Please select a location");
+    if ((location.location_name) === "") {
+      window.alert("Please fill in all fields");
     } else {
       //disable the button - no extra clicks
       setIsLoading(true);
@@ -69,8 +70,9 @@ export const LocationForm = () => {
           neighborhood_id: location.neighborhood_id,
           category_id: location.category_id
 
-        }).then(() => history.push(`/locations/detail/${location.id}`));
+        }).then(() => history.push(`/locations`));
       } else {
+        // This links to the add safe spot button
         //POST - add
         addLocation({
           id: location.id,
@@ -86,7 +88,7 @@ export const LocationForm = () => {
     }
   };
 
-  // Get customers and locations. If animalId is in the URL, getAnimalById
+  // Get locations. If locationId is in the URL, getLocationById
   useEffect(() => {
     getLocations().then(() => {
       if (locationId) {
@@ -104,10 +106,10 @@ export const LocationForm = () => {
 
   return (
     <form className="locationForm">
-      <h2 className="locationForm_title">New Safe Spot</h2>
+      <h2 className="locationForm_title" style={{color: "blue"}}>Safe Spot</h2>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="name">Location Name</label>
+          <label style={{color: "blue"}} htmlFor="name"></label>
           <input
             type="text"
             id="location_name"
