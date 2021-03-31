@@ -2,9 +2,26 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
+    margin-bottom: 1.5rem;
 }
 
 .navbar__item {
     flex-basis: 20%;
     list-style-type: none;
 }
+h6{
+    padding-top: 0.75rem;
+    margin-left: 20rem;
+    color: blue;
+}
+.writ-logo{
+    color: blue;
+}
+
+#basic-nav-dropdown{
+    color: blue
+}
+
+/* .image {
+    background-image: url(safespotlogo.png);
+} */

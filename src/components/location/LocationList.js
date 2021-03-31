@@ -65,49 +65,7 @@ export const LocationList = () => {
   return (
     <>
       <div classname="dropdown-div">
-        {/* dropdown for category */}
-
-        {/* <div className="category-dropdown">
-      
-          <label htmlFor="location"></label>
-          <select
-            value={location.category_id}
-            name="category_id"
-            id="category_id"
-            onChange={handleControlledInputChange}
-            className="filters"
-          >
-            <option value="0">Please select a Safe Spot Category</option>
-            {categories.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.name}
-              </option>
-            ))}
-          </select>
-          
-        </div> */}
-
-        {/* dropdown for neighborhood */}
-
-        {/* <div className="neighborhood-dropdown">
-        
-          <label htmlFor=""></label>
-          <select
-            value={location.neighborhood_id}
-            name="neighborhood_id"
-            id="neighborhood_id"
-            onChange={handleControlledInputChange}
-            className="filters"
-          >
-            <option value="0">Please select a neighborhood</option>
-            {neighborhood.map((n) => (
-              <option key={n.id} value={n.id}>
-                {n.name}
-              </option>
-            ))}
-          </select>
-          
-        </div> */}
+       
       </div>
 
       {/* Bootstrap example */}
@@ -117,7 +75,8 @@ export const LocationList = () => {
             <Col>
               <div classname="filters">
                 <>
-                  Location search:
+                  Location search :
+
                   <input
                     type="text"
                     className="input"
@@ -169,7 +128,7 @@ export const LocationList = () => {
         </Form>
       </div>
 
-      <h2>Locations</h2>
+      <h2></h2>
       <Button
         variant="primary"
         onClick={() => {

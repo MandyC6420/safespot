@@ -11,9 +11,10 @@ export const LocationDetail = () => {
   const { locationId } = useParams();
   const history = useHistory();
 
+  // where delete happens
   const handleRelease = () => {
     releaseLocation(location.id).then(() => {
-      history.push("locations");
+      history.push("/locations");
     });
   };
 
@@ -26,9 +27,9 @@ export const LocationDetail = () => {
 
   return (
     <section className="location">
-      <h3 className="location__name">{location.location_name}</h3>
-      <div className="location__breed">{location.location_phoneNumber}</div>
-      {/* What's up with the question mark???? See below.*/}
+      <h3 style={{color: "blue"}} className="location__name">{location.location_name}</h3>
+      <div className="location__phoneNumber">{location.location_phoneNumber}</div>
+      
       <div className="location__location">
         Location: {location.location_address}
       </div>
@@ -40,7 +41,7 @@ export const LocationDetail = () => {
         Edit
         </Button>{' '}
       <Button onClick={handleRelease}>Delete Safe Spot</Button>
-      {/* <div className="location__owner">Customer: {location.customer?.location_url}</div> */}
+    
     </section>
   );
 };
