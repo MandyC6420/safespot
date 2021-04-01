@@ -17,7 +17,7 @@ export const LocationDetail = () => {
       history.push("/locations");
     });
   };
-
+//  getting data from the server using locationId and setting that to state
   useEffect(() => {
     console.log("useEffect", locationId);
     getLocationById(locationId).then((response) => {
