@@ -1,3 +1,39 @@
+Hello and Welcome to Safe Spot!
+
+This application is for any Huntingtonian in need of community services.  It quickly
+allows the user to search for "Safe Spots", designated spaces in the Huntington area
+where meals, job services, or shelter is offered.
+
+How to Start the App:
+
+1.  Please either fork this repository to create your own local repository or clone it down to run it.
+2.  After making sure you are in the /src directory in the terminal (if not, cd into it), run npm install in the project directory in the terminal to install the necessary packages to allow the app to function properly.
+3.  Run json-server -p 3000 -w database.json in the project directory's api folder in order to initiate the database. These steps will let you run a json server with the safespot Json.
+4.  In a separate terminal window, start the app by running npm start which will run the app in the development mode by opening http://localhost:3000 in browser.
+
+**Getting Started**
+New Users
+
+To create an account please select the option "Not a member yet" on the initial login
+page. Please select an anonymous usersname to type in the respective field.  
+This allows for complete anonymity for a user of safe spot.  Once a username is selected, please click the register button to register to safe spot.
+
+Registered Users
+
+To login, enter your registered username, and click sign in.
+
+Searching Safe Spots
+
+Navigating to the search bar allows users to search safe spots by simply using letters included in that safe spot name. 
+
+Filtering Safe Spots
+
+Users can also filter safe spots by category and neighborhood.  There are two dropdowns
+to select from.  One by category, such as shelter and meals, or legal services.
+The second filter allows the user to search by neighborhood.  These filters can be 
+used individually or in tandem. 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
