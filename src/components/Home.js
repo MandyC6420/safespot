@@ -1,13 +1,13 @@
 import React from "react";
 import { LocationCard } from "./location/LocationCard";
-import safetyfirstmangif from "../gifs/safetyfirstmangif.gif";
+import safespotlogo from "../components/auth/safespotlogo.png";
 import "./Home.css";
 
 
 export const Home = () => (
   <>
     <div className="safety-first">
-      <img src={safetyfirstmangif} alt="loading..." />
+    <img src={safespotlogo} style={{width:500}} />
     </div>
   </>
 );

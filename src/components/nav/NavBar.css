@@ -19,9 +19,9 @@ h6{
 }
 
 #basic-nav-dropdown{
-    color: blue
+    /* color: blue */
 }
 
-/* .image {
-    background-image: url(safespotlogo.png);
-} */
+.navbar-brand{
+    /* height: 5rem; */
+}

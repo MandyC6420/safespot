@@ -137,6 +137,7 @@ export const LocationList = () => {
       >
         Add Safe Spot
       </Button>
+      {/* conditionals for drop down filters */}
       <div className="locations">
         {filteredLocations.map((loc) => {
           return location.neighborhood_id !== "0" &&

@@ -5,9 +5,7 @@ import { CategoryContext } from "../category/CategoryProvider";
 import "./LocationForm.css";
 import { useHistory, useParams } from "react-router-dom";
 
-
 export const LocationForm = () => {
-  // const { addLocation } = useContext(LocationContext)
   const {
     locations,
     addLocation,
@@ -53,14 +51,16 @@ export const LocationForm = () => {
   };
   // conditional to ensure fields are completed prior to saving a safe spot
   const handleSaveLocation = () => {
-    if ((location.location_name) === "") {
+    if (location.location_name === "") {
       window.alert("Please fill in all fields");
     } else {
       //disable the button - no extra clicks
       setIsLoading(true);
       if (locationId) {
         //PUT - update
-        {console.log(location)}
+        {
+          console.log(location);
+        }
         updateLocation({
           id: location.id,
           location_name: location.location_name,
@@ -68,8 +68,7 @@ export const LocationForm = () => {
           location_address: location.location_address,
           location_url: location.location_url,
           neighborhood_id: location.neighborhood_id,
-          category_id: location.category_id
-
+          category_id: location.category_id,
         }).then(() => history.push(`/locations`));
       } else {
         // This links to the add safe spot button
@@ -81,8 +80,7 @@ export const LocationForm = () => {
           location_address: location.location_address,
           location_url: location.location_url,
           neighborhood_id: location.neighborhood_id,
-          category_id: location.category_id
-
+          category_id: location.category_id,
         }).then(() => history.push("/locations"));
       }
     }
@@ -106,10 +104,12 @@ export const LocationForm = () => {
 
   return (
     <form className="locationForm">
-      <h2 className="locationForm_title" style={{color: "blue"}}>Safe Spot</h2>
+      <h2 className="locationForm_title" style={{ color: "blue" }}>
+        Safe Spot
+      </h2>
       <fieldset>
         <div className="form-group">
-          <label style={{color: "blue"}} htmlFor="name"></label>
+          <label style={{ color: "blue" }} htmlFor="name"></label>
           <input
             type="text"
             id="location_name"
@@ -208,14 +208,16 @@ export const LocationForm = () => {
           </select>
         </div>
       </fieldset>
-      <button className="btn btn-primary"
-          disabled={isLoading}
-          onClick={event => {
-            event.preventDefault() // Prevent browser from submitting the form and refreshing the page
-            handleSaveLocation()
-          }}>
-        {locationId ? <>Save Location</> : <>Add Safe Spot</>}</button>
-      </form>
-    
+      <button
+        className="btn btn-primary"
+        disabled={isLoading}
+        onClick={(event) => {
+          event.preventDefault(); // Prevent browser from submitting the form and refreshing the page
+          handleSaveLocation();
+        }}
+      >
+        {locationId ? <>Save Location</> : <>Add Safe Spot</>}
+      </button>
+    </form>
   );
 };
