@@ -39,11 +39,11 @@ export const Login = props => {
             
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Safe Spot</h1>
+                    <h1 style={{color: "blue"}}>Safe Spot</h1>
                     <h2>Please sign in</h2>
-                    <large>Safety doesn't happen by Accident</large>
+                    <large style={{color: "blue"}}>Safety doesn't happen by Accident</large>
                     <fieldset>
-                        <label htmlFor="inputEmail"> Username </label>
+                        <label htmlFor="inputEmail"></label>
                         <input type="text"
                         ref = {username}
                             id="username"
