@@ -8,7 +8,7 @@ import { Button } from "react-bootstrap";
 import "./LocationCard.css";
 import { Form } from "react-bootstrap";
 import { Col } from "react-bootstrap";
-
+// location lists job is to print all locations
 export const LocationList = () => {
   // This state changes when `getLocations()` is invoked below
   const { locations, getLocations, searchTerms, setSearchTerms } = useContext(
@@ -41,7 +41,8 @@ export const LocationList = () => {
     setLocation(newLocation);
   };
 
-  //useEffect - reach out to the world for something
+  //useEffect - happens first, reach out to the world for something, sets state
+  // setting state causes a print
   useEffect(() => {
     //
     getLocations();
@@ -139,23 +140,23 @@ export const LocationList = () => {
       </Button>
       {/* conditionals for drop down filters */}
       <div className="locations">
-        {filteredLocations.map((loc) => {
+        {filteredLocations.map((singleLocationinLoop) => {
           return location.neighborhood_id !== "0" &&
             location.category_id !== "0" ? (
-            location.category_id === loc.category_id &&
-            location.neighborhood_id === loc.neighborhood_id ? (
-              <LocationCard key={loc.id} location={loc} />
+            location.category_id === singleLocationinLoop.category_id &&
+            location.neighborhood_id === singleLocationinLoop.neighborhood_id ? (
+              <LocationCard key={singleLocationinLoop.id} singleLocationProp={singleLocationinLoop} />
             ) : null
           ) : location.category_id !== "0" ? (
-            location.category_id === loc.category_id ? (
-              <LocationCard key={loc.id} location={loc} />
+            location.category_id === singleLocationinLoop.category_id ? (
+              <LocationCard key={singleLocationinLoop.id} singleLocationProp={singleLocationinLoop} />
             ) : null
           ) : location.neighborhood_id !== "0" ? (
-            location.neighborhood_id === loc.neighborhood_id ? (
-              <LocationCard key={loc.id} location={loc} />
+            location.neighborhood_id === singleLocationinLoop.neighborhood_id ? (
+              <LocationCard key={singleLocationinLoop.id} singleLocationProp={singleLocationinLoop} />
             ) : null
           ) : (
-            <LocationCard key={loc.id} location={loc} />
+            <LocationCard key={singleLocationinLoop.id} singleLocationProp={singleLocationinLoop} />
           );
         })}
       </div>
