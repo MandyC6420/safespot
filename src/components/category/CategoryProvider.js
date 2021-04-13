@@ -8,7 +8,7 @@ export const CategoryProvider = (props) => {
     const [categories, setCategories] = useState([])
 
     const getCategories = () => {
-        return fetch("http://localhost:8088/Categories")
+        return fetch("https://safe-spot1.herokuapp.com/Categories")
         .then(res => res.json())
         .then(setCategories)
     }

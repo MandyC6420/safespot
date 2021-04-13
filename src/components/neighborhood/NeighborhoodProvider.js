@@ -8,7 +8,7 @@ export const NeighborhoodProvider = (props) => {
     const [neighborhood, setNeighborhoods] = useState([])
 
     const getNeighborhoods = () => {
-        return fetch("http://localhost:8088/Neighborhood")
+        return fetch("https://safe-spot1.herokuapp.com/Neighborhood")
         .then(res => res.json())
         .then(setNeighborhoods)
     }

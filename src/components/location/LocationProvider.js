@@ -9,13 +9,13 @@ export const LocationProvider = (props) => {
   const [locations, setLocations] = useState([]);
 
   const getLocations = () => {
-    return fetch("http://localhost:8088/locations")
+    return fetch("https://safe-spot1.herokuapp.com/locations")
       .then((res) => res.json())
       .then(setLocations);
   };
 
   const addLocation = (locationObj) => {
-    return fetch("http://localhost:8088/locations", {
+    return fetch("https://safe-spot1.herokuapp.com/locations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,18 +28,18 @@ export const LocationProvider = (props) => {
 
   const getLocationById = (id) => {
     return fetch(
-      `http://localhost:8088/locations/${id}?_expand=location_name&_expand=location_phoneNumber&_expand=location_address&_expand=location_url`
+      `https://safe-spot1.herokuapp.com/locations/${id}?_expand=location_name&_expand=location_phoneNumber&_expand=location_address&_expand=location_url`
     ).then((res) => res.json());
   };
 
   const releaseLocation = (locationId) => {
-    return fetch(`http://localhost:8088/locations/${locationId}`, {
+    return fetch(`https://safe-spot1.herokuapp.com/locations/${locationId}`, {
       method: "DELETE",
     }).then(getLocations);
   };
 
   const updateLocation = (location) => {
-    return fetch(`http://localhost:8088/locations/${location.id}`, {
+    return fetch(`https://safe-spot1.herokuapp.com/locations/${location.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
